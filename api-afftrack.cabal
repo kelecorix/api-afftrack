@@ -1,13 +1,13 @@
 name:                api-afftrack
 version:             0.1.0.0
 synopsis:            Initial project template from stack
-description:         Please see README.md
-homepage:            http://github.com/sigrlami/api-afftrack#readme
-license:             BSD3
+description:         API binding for Afftrack affiliate platform (http://www.afftrack.com)
+homepage:            http://github.com/kelecorix/api-afftrack#readme
+license:             MIT
 license-file:        LICENSE
 author:              Sergey Bushnyak
 maintainer:          sergey.bushnyak@sigrlami.eu
-copyright:           2015, Sergey Bushnyak
+copyright:           2016, Sergey Bushnyak
 category:            Web
 build-type:          Simple
 -- extra-source-files:
@@ -15,10 +15,18 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Afftrack.API
+                 ,     Afftrack.API.AdminManager
+                 ,     Afftrack.API.Affiliate
+                 ,     Afftrack.API.Merchant
+                 ,     Afftrack.API.Offers
+                 ,     Afftrack.API.Report
+                 ,     Afftrack.API.Settings
+  
   build-depends:       base >= 4.7 && < 5
+               ,       text
   default-language:    Haskell2010
 
 source-repository head
   type:     git
-  location: https://github.com/sigrlami/api-afftrack
+  location: https://github.com/kelecorix/api-afftrack
