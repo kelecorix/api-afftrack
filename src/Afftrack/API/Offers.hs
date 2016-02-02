@@ -3,7 +3,11 @@
 {-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE DeriveAnyClass    #-}
 
-module Afftrack.API.Offers where
+module Afftrack.API.Offers
+       ( Offer(..)
+       , callGetOffer
+       , callGetOfferStatus  
+       )where
 
 import GHC.Generics
 import Data.Aeson
@@ -57,26 +61,29 @@ instance FromJSON Offer where
     -- A non-Object value is of the wrong type, so fail.
   parseJSON _        = empty  
 
-callOffers = Call "offer_offer"
-                  "getOffer"
-                  "GET"
-                  [ ("category", "")
-                  , ("converts_on", "")
-                  , ("device_type", "")
-                  , ("limit", "")
-                  , ("merchant_id", "") -- empty
-                  , ("name", "")
-                  , ("offer_id", "")
-                  , ("offer_type", "")
-                  , ("orderby", "")
-                  , ("page", "")
-                  , ("sort", "")
-                  , ("status", "107")
-                  , ("tracking_type", "")
-                  , ("traffic_type", "")
-                  ]
+callGetOffer =
+  Call "offer_offer"
+       "getOffer"
+       "GET"
+       [ ("category", "")
+       , ("converts_on", "")
+       , ("device_type", "")
+       , ("limit", "")
+       , ("merchant_id", "") -- empty
+       , ("name", "")
+       , ("offer_id", "")
+       , ("offer_type", "")
+       , ("orderby", "")
+       , ("page", "")
+       , ("sort", "")
+       , ("status", "107")
+       , ("tracking_type", "")
+       , ("traffic_type", "")
+       ]
 
-callOfferStatuses = Call "offer_offer"
-                         "getOfferStatus"
-                         "GET"
-                         []
+callGetOfferStatus =
+  Call "offer_offer"
+       "getOfferStatus"
+       "GET"
+       []
+
