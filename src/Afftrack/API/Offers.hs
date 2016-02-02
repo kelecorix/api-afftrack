@@ -6,6 +6,8 @@
 module Afftrack.API.Offers
        ( Offer(..)
        , callGetOffer
+       , callGetOfferBlacklist
+       , callGetOfferState  
        , callGetOfferStatus  
        )where
 
@@ -81,9 +83,26 @@ callGetOffer =
        , ("traffic_type", "")
        ]
 
+-- | Returns all blacklisted affiliates for the offer ID provided.
+--   
+calGetOfferBlacklist =
+  Call "offer_offer"
+       "getOfferBlacklist"
+       "GET"
+       [ ("offer_id", "")] -- Required
+
+-- | Returns array of all states targeted for the offer_id provided.
+-- 
+callGetOfferState =
+  Call "offer_offer"
+       "getOfferState"
+       "GET"
+       [ ("offer_id", "")] -- Required
+
 callGetOfferStatus =
   Call "offer_offer"
        "getOfferStatus"
        "GET"
        []
+
 
