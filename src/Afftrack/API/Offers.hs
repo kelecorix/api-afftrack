@@ -2,6 +2,7 @@
 {-# LANGUAGE FlexibleContexts  #-}
 {-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE DeriveAnyClass    #-}
+
 module Afftrack.API.Offers where
 
 import GHC.Generics
@@ -9,6 +10,8 @@ import Data.Aeson
 import Control.Applicative
 import Network.HTTP.Client
 import qualified Data.ByteString.Char8 as BS
+
+import Afftrack.API.Common
 
 --------------------------------------------------------------------------------
 

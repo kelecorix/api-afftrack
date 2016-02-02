@@ -16,6 +16,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Afftrack.API
+                 ,     Afftrack.API.Common
                  ,     Afftrack.API.AdminManager
                  ,     Afftrack.API.Affiliate
                  ,     Afftrack.API.Merchant
