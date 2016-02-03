@@ -8,7 +8,9 @@ module Afftrack.API.Offers
        , callGetOffer
        , callGetOfferBlacklist
        , callGetOfferState  
-       , callGetOfferStatus  
+       , callGetOfferStatus
+       , callGetOfferBrowserLanguageAllowed
+       , callGetOfferBrowserLanguageBlocked
        )where
 
 import GHC.Generics
@@ -90,6 +92,19 @@ calGetOfferBlacklist =
        "getOfferBlacklist"
        "GET"
        [ ("offer_id", "")] -- Required
+
+callGetOfferBrowserLanguageAllowed =
+    Call "offer_offer"
+         "getOfferBrowserLanguageAllowed"
+         "GET"
+         [ ("offer_id", "")] -- Required
+  
+callGetOfferBrowserLanguageBlocked =
+    Call "offer_offer"
+         "getOfferBrowserLanguageBlocked"
+         "GET"
+         [ ("offer_id", "")] -- Required
+  
 
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
