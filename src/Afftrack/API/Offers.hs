@@ -14,7 +14,8 @@ module Afftrack.API.Offers
        , callGetOfferCategories
        , callGetOfferCategory
        , callGetOfferCount
-       , callGetOfferCountry  
+       , callGetOfferCountry
+       , callGetOfferCustomAffiliateCap  
        )where
 
 import GHC.Generics
@@ -145,6 +146,12 @@ callGetOfferCount =
 callGetOfferCountry = 
   Call "offer_offer"
        "getOfferCountry"
+       "GET"
+        [ ("offer_id", "")] -- Required
+
+callGetOfferCustomAffiliateCap = 
+  Call "offer_offer"
+       "getOfferCustomAffiliateCap"
        "GET"
         [ ("offer_id", "")] -- Required
         
