@@ -13,7 +13,8 @@ module Afftrack.API.Offers
        , callGetOfferBrowserLanguageBlocked
        , callGetOfferCategories
        , callGetOfferCategory
-       , callGetOfferCount  
+       , callGetOfferCount
+       , callGetOfferCountry  
        )where
 
 import GHC.Generics
@@ -141,6 +142,12 @@ callGetOfferCount =
        , ("traffic_type", "")  
        ]
 
+callGetOfferCountry = 
+  Call "offer_offer"
+       "getOfferCountry"
+       "GET"
+        [ ("offer_id", "")] -- Required
+        
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
 callGetOfferState =
