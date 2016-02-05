@@ -169,6 +169,13 @@ getOfferDeviceType =
        "GET"
        [ ("offer_id", "")]  
 
+getOfferOptimization =
+  Call "offer_offer"
+       "getOfferOptimization"
+       "GET"
+       [ ("offer_id", "")]  
+
+
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
 getOfferState =
