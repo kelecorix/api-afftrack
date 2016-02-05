@@ -5,18 +5,19 @@
 
 module Afftrack.API.Offers
        ( Offer(..)
-       , callGetOffer
-       , callGetOfferBlacklist
-       , callGetOfferState  
-       , callGetOfferStatus
-       , callGetOfferBrowserLanguageAllowed
-       , callGetOfferBrowserLanguageBlocked
-       , callGetOfferCategories
-       , callGetOfferCategory
-       , callGetOfferCount
-       , callGetOfferCountry
-       , callGetOfferCustomAffiliateCap
-       , callgetOfferCustomAffiliatePayout  
+       , getOffer
+       , getOfferBlacklist
+       , getOfferState  
+       , getOfferStatus
+       , getOfferBrowserLanguageAllowed
+       , getOfferBrowserLanguageBlocked
+       , getOfferCategories
+       , getOfferCategory
+       , getOfferCount
+       , getOfferCountry
+       , getOfferCustomAffiliateCap
+       , getOfferCustomAffiliatePayout
+       , getOfferDeviceType  
        )where
 
 import GHC.Generics
@@ -71,7 +72,7 @@ instance FromJSON Offer where
     -- A non-Object value is of the wrong type, so fail.
   parseJSON _        = empty  
 
-callGetOffer =
+getOffer =
   Call "offer_offer"
        "getOffer"
        "GET"
@@ -93,19 +94,19 @@ callGetOffer =
 
 -- | Returns all blacklisted affiliates for the offer ID provided.
 --   
-callGetOfferBlacklist =
+getOfferBlacklist =
   Call "offer_offer"
        "getOfferBlacklist"
        "GET"
        [ ("offer_id", "")] -- Required
 
-callGetOfferBrowserLanguageAllowed =
+getOfferBrowserLanguageAllowed =
     Call "offer_offer"
          "getOfferBrowserLanguageAllowed"
          "GET"
          [ ("offer_id", "")] -- Required
   
-callGetOfferBrowserLanguageBlocked =
+getOfferBrowserLanguageBlocked =
     Call "offer_offer"
          "getOfferBrowserLanguageBlocked"
          "GET"
@@ -113,7 +114,7 @@ callGetOfferBrowserLanguageBlocked =
 
 -- | All offer categories returned.
 --  
-callGetOfferCategories =
+getOfferCategories =
   Call "offer_offer"
        "getOfferCategories"
        "GET"
@@ -121,7 +122,7 @@ callGetOfferCategories =
 
 -- | Returns all categories listed for the offer ID provided.
 -- 
-callGetOfferCategory = 
+getOfferCategory = 
   Call "offer_offer"
        "getOfferCategory"
        "GET"
@@ -129,7 +130,7 @@ callGetOfferCategory =
 
 -- | Return Int
 --  
-callGetOfferCount = 
+getOfferCount = 
   Call "offer_offer"
        "getOfferCount"
        "GET"
@@ -144,33 +145,39 @@ callGetOfferCount =
        , ("traffic_type", "")  
        ]
 
-callGetOfferCountry = 
+getOfferCountry = 
   Call "offer_offer"
        "getOfferCountry"
        "GET"
         [ ("offer_id", "")] -- Required
 
-callGetOfferCustomAffiliateCap = 
+getOfferCustomAffiliateCap = 
   Call "offer_offer"
        "getOfferCustomAffiliateCap"
        "GET"
         [ ("offer_id", "")] -- Required
 
-callgetOfferCustomAffiliatePayout =
+getOfferCustomAffiliatePayout =
   Call "offer_offer"
        "getOfferCustomAffiliatePayout"
        "GET"
        [ ("offer_id", "")]  
-        
+
+getOfferDeviceType =
+  Call "offer_offer"
+       "getOfferDeviceType"
+       "GET"
+       [ ("offer_id", "")]  
+
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
-callGetOfferState =
+getOfferState =
   Call "offer_offer"
        "getOfferState"
        "GET"
        [ ("offer_id", "")] -- Required
 
-callGetOfferStatus =
+getOfferStatus =
   Call "offer_offer"
        "getOfferStatus"
        "GET"
