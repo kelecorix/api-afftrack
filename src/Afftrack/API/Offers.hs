@@ -15,7 +15,8 @@ module Afftrack.API.Offers
        , callGetOfferCategory
        , callGetOfferCount
        , callGetOfferCountry
-       , callGetOfferCustomAffiliateCap  
+       , callGetOfferCustomAffiliateCap
+       , callgetOfferCustomAffiliatePayout  
        )where
 
 import GHC.Generics
@@ -154,6 +155,12 @@ callGetOfferCustomAffiliateCap =
        "getOfferCustomAffiliateCap"
        "GET"
         [ ("offer_id", "")] -- Required
+
+callgetOfferCustomAffiliatePayout =
+  Call "offer_offer"
+       "getOfferCustomAffiliatePayout"
+       "GET"
+       [ ("offer_id", "")]  
         
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
