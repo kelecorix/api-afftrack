@@ -19,7 +19,9 @@ module Afftrack.API.Offers
        , getOfferCustomAffiliatePayout
        , getOfferDeviceType
        , getOfferPrivate
-       , getOfferSchedule  
+       , getOfferSchedule
+       , getOfferTargeting
+       , getOfferTrafficType  
        )where
 
 import GHC.Generics
@@ -188,9 +190,7 @@ getOfferSchedule =
        "getOfferSchedule"
        "GET"
        [ ("offer_id", "")]
-  
-
-  
+    
 -- | Returns array of all states targeted for the offer_id provided.
 -- 
 getOfferState =
@@ -205,4 +205,15 @@ getOfferStatus =
        "GET"
        []
 
+getOfferTargeting =
+  Call "offer_offer"
+       "getOfferTargeting"
+       "GET"
+       []
 
+getOfferTrafficType =
+  Call "offer_offer"
+       "getOfferTrafficType"
+       "GET"
+       []
+  
