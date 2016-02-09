@@ -21,7 +21,9 @@ module Afftrack.API.Offers
        , getOfferPrivate
        , getOfferSchedule
        , getOfferTargeting
-       , getOfferTrafficType  
+       , getOfferTrafficType
+       , getOfferTypes
+       , getPixelTypes  
        )where
 
 import GHC.Generics
@@ -220,6 +222,12 @@ getOfferTrafficType =
 getOfferTypes =
   Call "offer_offer"
        "getOfferTypes"
+       "GET"
+       []
+  
+getPixelTypes =
+  Call "offer_offer"
+       "getPixelTypes"
        "GET"
        []
   
