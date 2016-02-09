@@ -23,7 +23,8 @@ module Afftrack.API.Offers
        , getOfferTargeting
        , getOfferTrafficType
        , getOfferTypes
-       , getPixelTypes  
+       , getPixelTypes
+       , getTestLink  
        )where
 
 import GHC.Generics
@@ -230,4 +231,10 @@ getPixelTypes =
        "getPixelTypes"
        "GET"
        []
+  
+getTestLink =
+  Call "offer_offer"
+       "getTestLink"
+       "GET"
+       [("admin_id", "")] -- Required
   
