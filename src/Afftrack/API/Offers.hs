@@ -215,5 +215,11 @@ getOfferTrafficType =
   Call "offer_offer"
        "getOfferTrafficType"
        "GET"
+       [ ("offer_id", "")] -- Required
+  
+getOfferTypes =
+  Call "offer_offer"
+       "getOfferTypes"
+       "GET"
        []
   
