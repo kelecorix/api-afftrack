@@ -25,7 +25,10 @@ module Afftrack.API.Offers
        , getOfferTypes
        , getPixelTypes
        , getTestLink
-       , getTrackingTypes  
+       , getTrackingTypes
+       , getTrafficTypes
+       , removeOfferBlacklist
+       , removeOfferBrowserLanguageAllowed  
        )where
 
 import GHC.Generics
@@ -244,4 +247,23 @@ getTrackingTypes =
        "getTrackingTypes"
        "GET"
        []
+       
+getTrafficTypes =   
+  Call "offer_offer"
+       "getTrafficTypes"
+       "GET"
+       []
+
+removeOfferBlacklist =
+  Call "offer_offer"
+       "removeOfferBlacklist"
+       "POST"
+       [("affiliate_id", "")]
+
+removeOfferBrowserLanguageAllowed =
+  Call "offer_offer"
+       "removeOfferBrowserLanguageAllowed"
+       "POST"
+       [("offer_id", "")]  -- Required
   
+       
