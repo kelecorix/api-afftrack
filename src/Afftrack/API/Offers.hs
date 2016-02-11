@@ -29,7 +29,8 @@ module Afftrack.API.Offers
        , getTrafficTypes
        , removeOfferBlacklist
        , removeOfferBrowserLanguageAllowed
-       , removeOfferBrowserLanguageBlocked  
+       , removeOfferBrowserLanguageBlocked
+       , removeOfferCountry  
        )where
 
 import GHC.Generics
@@ -270,6 +271,12 @@ removeOfferBrowserLanguageAllowed =
 removeOfferBrowserLanguageBlocked =
   Call "offer_offer"
        "removeOfferBrowserLanguageBlocked"
+       "POST"
+       []
+  
+removeOfferCountry =
+  Call "offer_offer"
+       "removeOfferCountry"
        "POST"
        []
   
