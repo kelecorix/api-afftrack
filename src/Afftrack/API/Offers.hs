@@ -278,11 +278,11 @@ removeOfferCountry =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
-       []
+       [("offer_id", "")] -- Required
 
 removeOfferCustomAffiliateCap =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
-       [("offer_id", "")]
+       [("offer_id", "")] -- Required
   
