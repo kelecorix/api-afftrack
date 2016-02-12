@@ -30,7 +30,9 @@ module Afftrack.API.Offers
        , removeOfferBlacklist
        , removeOfferBrowserLanguageAllowed
        , removeOfferBrowserLanguageBlocked
-       , removeOfferCountry  
+       , removeOfferCountry
+       , removeOfferCustomAffiliateCAP
+       , removeOfferCustomAffiliatePayout  
        )where
 
 import GHC.Generics
@@ -281,6 +283,12 @@ removeOfferCountry =
        [("offer_id", "")] -- Required
 
 removeOfferCustomAffiliateCap =
+  Call "offer_offer"
+       "removeOfferCountry"
+       "POST"
+       [("offer_id", "")] -- Required
+  
+removeOfferCustomAffiliatePayout =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
