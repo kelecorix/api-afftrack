@@ -293,4 +293,9 @@ removeOfferCustomAffiliatePayout =
        "removeOfferCountry"
        "POST"
        [("offer_id", "")] -- Required
-  
+
+removeOfferDeviceType = 
+  Call "offer_offer"
+       "removeOfferDeviceType"
+       "POST"
+       [("device_id", "")] -- Required
