@@ -35,7 +35,8 @@ module Afftrack.API.Offers
        , removeOfferCustomAffiliatePayout
        , removeOfferDeviceType
        , removeOfferOptimization
-       , removeOfferPrivate  
+       , removeOfferPrivate
+       , removeOfferSchedule
        )where
 
 import GHC.Generics
@@ -318,3 +319,12 @@ removeOfferPrivate =
        [("offer_id", "") -- Required
        ,("affiliate_id", "") 
        ]
+
+removeOfferSchedule =
+  Call "offer_offer"
+       "removeOfferSchedule"
+       "POST"
+       [("offer_id", "") -- Required
+       ,("schedule_id", "") 
+       ]
+  
