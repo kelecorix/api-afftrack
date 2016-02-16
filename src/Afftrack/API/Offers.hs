@@ -37,6 +37,7 @@ module Afftrack.API.Offers
        , removeOfferOptimization
        , removeOfferPrivate
        , removeOfferSchedule
+       , removeOfferScheduleRate  
        )where
 
 import GHC.Generics
@@ -323,6 +324,14 @@ removeOfferPrivate =
 removeOfferSchedule =
   Call "offer_offer"
        "removeOfferSchedule"
+       "POST"
+       [("offer_id", "") -- Required
+       ,("schedule_id", "") 
+       ]
+  
+removeOfferScheduleRate =
+  Call "offer_offer"
+       "removeOfferScheduleRate"
        "POST"
        [("offer_id", "") -- Required
        ,("schedule_id", "") 
