@@ -336,4 +336,12 @@ removeOfferScheduleRate =
        [("offer_id", "") -- Required
        ,("schedule_id", "") 
        ]
+
+removeOfferState =
+  Call "offer_offer"
+       "removeOfferState"
+       "POST"
+       [("offer_id", "") -- Required
+       ,("state", "") 
+       ]
   
