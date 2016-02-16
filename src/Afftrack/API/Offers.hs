@@ -345,3 +345,11 @@ removeOfferState =
        ,("state", "") 
        ]
   
+removeOfferTrafficType =
+  Call "offer_offer"
+       "removeOfferTrafficType"
+       "POST"
+       [("offer_id", "") -- Required
+       ,("traffic_type_id", "") 
+       ]
+  
