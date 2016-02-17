@@ -41,7 +41,8 @@ module Afftrack.API.Offers
        , removeOfferState
        , removeOfferTrafficType
        , updateOffer
-       , updateOfferSchedule  
+       , updateOfferSchedule
+       , updateTrackingLink  
        )where
 
 import GHC.Generics
@@ -416,4 +417,12 @@ updateOfferSchedule =
        , ("datetime_end", "")
        , ("new_rate", "")
        , ("status", "")  
-       ]  
+       ]
+       
+updateTrackingLink = 
+  Call "offer_offer"
+       "updateOfferSchedule"
+       "POST"
+       [ ("offer_id", "")     -- Required
+       , ("tracking_url", "") -- Required  
+       ]
