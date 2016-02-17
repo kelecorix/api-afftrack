@@ -41,6 +41,7 @@ module Afftrack.API.Offers
        , removeOfferState
        , removeOfferTrafficType
        , updateOffer
+       , updateOfferSchedule  
        )where
 
 import GHC.Generics
@@ -406,3 +407,13 @@ updateOffer =
        ,("weekly_cap", "") 
        ]
   
+updateOfferSchedule =
+  Call "offer_offer"
+       "updateOfferSchedule"
+       "POST"
+       [ ("datetime_start", "") -- Required
+       , ("offer_id", "")       -- Required
+       , ("datetime_end", "")
+       , ("new_rate", "")
+       , ("status", "")  
+       ]  
