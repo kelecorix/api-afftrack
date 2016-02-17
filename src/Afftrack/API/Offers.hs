@@ -37,7 +37,10 @@ module Afftrack.API.Offers
        , removeOfferOptimization
        , removeOfferPrivate
        , removeOfferSchedule
-       , removeOfferScheduleRate  
+       , removeOfferScheduleRate
+       , removeOfferState
+       , removeOfferTrafficType
+       , updateOffer
        )where
 
 import GHC.Generics
@@ -351,5 +354,55 @@ removeOfferTrafficType =
        "POST"
        [("offer_id", "") -- Required
        ,("traffic_type_id", "") 
+       ]
+
+updateOffer =
+  Call "offer_offer"
+       "updateOffer"
+       "POST"
+       [("offer_id", "") -- Required
+       ,("basic_proxy_filter", "") 
+       ,("block_ip", "") 
+       ,("break_frame", "") 
+       ,("captcha", "") 
+       ,("cap_redirect", "") 
+       ,("category", "") 
+       ,("click_frequency", "") 
+       ,("click_frequency_subnet", "") 
+       ,("click_frequency_unit", "") 
+       ,("converts_at", "") 
+       ,("cookie_life", "") 
+       ,("daily_aff_cap", "") 
+       ,("daily_cap", "") 
+       ,("geo_redirect", "") 
+       ,("hide_lead_rate", "") 
+       ,("hourly_cap", "") 
+       ,("intense_proxy_filter", "") 
+       ,("lead_rate", "") 
+       ,("maxmind", "") 
+       ,("merchant_id", "") 
+       ,("merchant_paying", "") 
+       ,("monthly_aff_cap", "") 
+       ,("monthly_cap", "") 
+       ,("name", "") 
+       ,("name_private", "") 
+       ,("pixel_type", "") 
+       ,("preview", "") 
+       ,("private", "") 
+       ,("redirect", "") 
+       ,("reject_info", "") 
+       ,("requirements", "") 
+       ,("select", "") 
+       ,("select_by", "") 
+       ,("select_who", "") 
+       ,("status", "") 
+       ,("subnet", "") 
+       ,("time_zone", "") 
+       ,("total_aff_cap", "") 
+       ,("total_cap", "") 
+       ,("tracking_type", "") 
+       ,("type", "") 
+       ,("weekly_aff_cap", "") 
+       ,("weekly_cap", "") 
        ]
   
