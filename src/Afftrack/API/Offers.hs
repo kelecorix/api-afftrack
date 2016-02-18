@@ -6,7 +6,8 @@
 module Afftrack.API.Offers
        ( Offer(..)
        , getConvertsOn  
-       , getBrowserLanguages  
+       , getBrowserLanguages
+       , getCreativeCounts  
        , getOffer
        , getOfferBlacklist
        , getOfferState  
@@ -111,7 +112,12 @@ getConvertsOn =
        "getConvertsOn"
        "GET"
        []
-  
+       
+getCreativeCounts =
+  Call "offer_offer"
+       "getCreativeCounts"
+       "GET"
+       [ ("offer_id", "")] -- Required  
   
 getOffer =
   Call "offer_offer"
