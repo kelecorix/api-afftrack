@@ -5,6 +5,7 @@
 
 module Afftrack.API.Offers
        ( Offer(..)
+       , getBrowserLanguages  
        , getOffer
        , getOfferBlacklist
        , getOfferState  
@@ -95,7 +96,15 @@ instance FromJSON Offer where
               v .: "program_adv_paying"   <*>
               v .: "program_mid"
     -- A non-Object value is of the wrong type, so fail.
-  parseJSON _        = empty  
+  parseJSON _        = empty
+
+
+getBrowserLanguages =
+  Call "offer_offer"
+       "getBrowserLanguages"
+       "GET"
+       []  
+  
 
 getOffer =
   Call "offer_offer"
