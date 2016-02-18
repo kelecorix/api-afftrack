@@ -5,6 +5,7 @@
 
 module Afftrack.API.Offers
        ( Offer(..)
+       , getConvertsOn  
        , getBrowserLanguages  
        , getOffer
        , getOfferBlacklist
@@ -103,9 +104,15 @@ getBrowserLanguages =
   Call "offer_offer"
        "getBrowserLanguages"
        "GET"
-       []  
-  
+       []
 
+getConvertsOn =
+  Call "offer_offer"
+       "getConvertsOn"
+       "GET"
+       []
+  
+  
 getOffer =
   Call "offer_offer"
        "getOffer"
