@@ -126,7 +126,12 @@ getCreatives =
        "GET"
        [ ("offer_id", "")] -- Required  
   
-       
+getDeviceTypes =
+  Call "offer_offer"
+       "getDeviceTypes"
+       "GET"
+       []  
+
 getOffer =
   Call "offer_offer"
        "getOffer"
