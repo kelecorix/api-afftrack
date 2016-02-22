@@ -5,7 +5,8 @@
 
 module Afftrack.API.Offers
        ( Offer(..)
-       , addBrowserLanguageBlocked  
+       , addBrowserLanguageBlocked
+       , addOfferBlacklist  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -105,10 +106,21 @@ instance FromJSON Offer where
 addBrowserLanguageBlocked = 
   Call "offer_offer"
        "addBrowserLanguageBlocked"
-       "GET"
+       "POST"
        [ ("language", "")   -- Required
        , ("offer_id", "")   -- Required
-       ]  
+       ]
+
+addOfferBlacklist =
+  Call "offer_offer"
+       "addOfferBlacklist"
+       "POST"
+       [ ("affiliate_id", "")   -- Required
+       , ("offer_id", "")       -- Required
+       , ("reason","")  
+       ]
+  
+       
 
 getBrowserLanguages =
   Call "offer_offer"
