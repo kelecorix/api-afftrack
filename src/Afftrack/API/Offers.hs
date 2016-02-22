@@ -5,6 +5,7 @@
 
 module Afftrack.API.Offers
        ( Offer(..)
+       , addBrowserLanguageBlocked  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -101,6 +102,13 @@ instance FromJSON Offer where
     -- A non-Object value is of the wrong type, so fail.
   parseJSON _        = empty
 
+addBrowserLanguageBlocked = 
+  Call "offer_offer"
+       "addBrowserLanguageBlocked"
+       "GET"
+       [ ("language", "")   -- Required
+       , ("offer_id", "")   -- Required
+       ]  
 
 getBrowserLanguages =
   Call "offer_offer"
