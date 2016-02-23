@@ -9,7 +9,8 @@ module Afftrack.API.Offers
        , addOfferBlacklist
        , addOfferBrowserLanguageAllowed
        , addOfferCategory
-       , addOfferCountry  
+       , addOfferCountry
+       , addOfferCustomAffiliateCap  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -148,7 +149,18 @@ addOfferCountry =
        , ("enforce", "")  
        ]
 
-
+addOfferCustomAffiliateCap =
+  Call "offer_offer"
+       "addOfferCustomAffiliateCap"
+       "POST"
+       [ ("affiliate_id", "")    -- Required
+       , ("offer_id", "")        -- Required
+       , ("type", "")            -- Required  
+       , ("day", "")  
+       , ("month", "")  
+       , ("total", "")  
+       , ("week", "")  
+       ]  
 
 getBrowserLanguages =
   Call "offer_offer"
