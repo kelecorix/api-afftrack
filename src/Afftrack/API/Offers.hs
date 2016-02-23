@@ -8,7 +8,8 @@ module Afftrack.API.Offers
        , addBrowserLanguageBlocked
        , addOfferBlacklist
        , addOfferBrowserLanguageAllowed
-       , addOfferCategory  
+       , addOfferCategory
+       , addOfferCountry  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -138,6 +139,16 @@ addOfferCategory =
        , ("offer_id", "")   -- Required
        ]
   
+addOfferCountry = 
+  Call "offer_offer"
+       "addOfferCountry"
+       "POST"
+       [ ("country", "")    -- Required
+       , ("offer_id", "")   -- Required
+       , ("enforce", "")  
+       ]
+
+
 
 getBrowserLanguages =
   Call "offer_offer"
