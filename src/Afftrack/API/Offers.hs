@@ -10,7 +10,8 @@ module Afftrack.API.Offers
        , addOfferBrowserLanguageAllowed
        , addOfferCategory
        , addOfferCountry
-       , addOfferCustomAffiliateCap  
+       , addOfferCustomAffiliateCap
+       , addOfferCustomAffiliatePayout  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -160,6 +161,16 @@ addOfferCustomAffiliateCap =
        , ("month", "")  
        , ("total", "")  
        , ("week", "")  
+       ]
+       
+addOfferCustomAffiliatePayout =
+  Call "offer_offer"
+       "addOfferCustomAffiliatePayout"
+       "POST"
+       [ ("affiliate_id", "")        -- Required
+       , ("affiliate_payout", "")    -- Required
+       , ("offer_id", "")            -- Required  
+       , ("merchant_payout", "")    
        ]  
 
 getBrowserLanguages =
