@@ -14,7 +14,9 @@ module Afftrack.API.Offers
        , addOfferCustomAffiliatePayout
        , addOfferDeviceType
        , addOfferOptimization
-       , addOfferPrivate  
+       , addOfferPrivate
+       , addOfferState
+       , addOfferTrafficType  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -201,6 +203,22 @@ addOfferPrivate =
        , ("offer_id", "")         -- Required
        ]    
 
+addOfferState =
+  Call "offer_offer"
+       "addOfferState"
+       "POST"
+       [ ("offer_id", "")     -- Required
+       , ("state", "")        -- Required
+       ]    
+
+addOfferTrafficType =
+  Call "offer_offer"
+       "addOfferTrafficType"
+       "POST"
+       [ ("offer_id", "")            -- Required
+       , ("traffic_type_id", "")     -- Required
+       ]    
+  
 getBrowserLanguages =
   Call "offer_offer"
        "getBrowserLanguages"
