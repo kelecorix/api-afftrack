@@ -13,7 +13,8 @@ module Afftrack.API.Offers
        , addOfferCustomAffiliateCap
        , addOfferCustomAffiliatePayout
        , addOfferDeviceType
-       , addOfferOptimization  
+       , addOfferOptimization
+       , addOfferPrivate  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -185,14 +186,20 @@ addOfferDeviceType =
   
 addOfferOptimization =
   Call "offer_offer"
-       "addOfferDeviceType"
+       "addOfferOptimization"
        "POST"
        [ ("affiliate_id", "")     -- Required
        , ("offer_id", "")         -- Required
        , ("percent", "")          -- Required  
        ]  
   
-  
+addOfferPrivate =
+  Call "offer_offer"
+       "addOfferPrivate"
+       "POST"
+       [ ("affiliate_id", "")     -- Required
+       , ("offer_id", "")         -- Required
+       ]    
 
 getBrowserLanguages =
   Call "offer_offer"
