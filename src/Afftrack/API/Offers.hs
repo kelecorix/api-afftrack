@@ -17,7 +17,8 @@ module Afftrack.API.Offers
        , addOfferPrivate
        , addOfferState
        , addOfferTrafficType
-       , createBannerCreative  
+       , createBannerCreative
+       , createOffer  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -223,12 +224,30 @@ addOfferTrafficType =
 
 createBannerCreative = 
   Call "offer_offer"
-       "addOfferTrafficType"
+       "createBannerCreative"
        "POST"
        [ ("offer_id", "")            -- Required
        , ("traffic_type_id", "")     -- Required
        ]
-       
+
+createOffer = 
+  Call "offer_offer"
+       "createOffer"
+       "POST"
+       [ ("admin_id", "")      -- Required
+       , ("category", "")     -- Required
+       , ("converts_at", "")     -- Required
+       , ("lead_rate", "")     -- Required
+       , ("merchant_id", "")     -- Required
+       , ("merchant_paying", "")     -- Required
+       , ("name", "")
+       , ("name_private", "")
+       , ("note", "")
+       , ("preview", "")
+       , ("requirements", "")  
+       ]
+
+  
 getBrowserLanguages =
   Call "offer_offer"
        "getBrowserLanguages"
