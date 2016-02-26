@@ -19,7 +19,8 @@ module Afftrack.API.Offers
        , addOfferTrafficType
        , createBannerCreative
        , createOffer
-       , createOfferSchedule  
+       , createOfferSchedule
+       , createOfferScheduleDaily  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -256,8 +257,31 @@ createOfferSchedule =
        , ("schedule_start", "")  -- Required
        , ("type", "")            -- Required
        , ("admin_id", "")  
-       ]      
-  
+       ]
+
+createOfferScheduleDaily =
+  Call "offer_offer"
+       "createOfferScheduleDaily"
+       "POST"
+       [ ("daily_end_time", "")      -- Required
+       , ("daily_start_time", "")    -- Required
+       , ("offer_id", "")            -- Required
+       , ("schedule_end", "")        -- Required  
+       , ("schedule_start", "")      -- Required 
+       , ("admin_id", "")  
+       ]  
+
+createOfferScheduleRate =
+  Call "offer_offer"
+       "createOfferScheduleRate"
+       "POST"
+       [ ("affiliate_payout", "")    -- Required
+       , ("merchant_payout", "")     -- Required
+       , ("offer_id", "")            -- Required
+       , ("schedule_start", "")      -- Required
+       , ("admin_id", "")  
+       ]  
+       
 getBrowserLanguages =
   Call "offer_offer"
        "getBrowserLanguages"
