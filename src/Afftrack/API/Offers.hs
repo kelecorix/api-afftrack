@@ -20,7 +20,9 @@ module Afftrack.API.Offers
        , createBannerCreative
        , createOffer
        , createOfferSchedule
-       , createOfferScheduleDaily  
+       , createOfferScheduleDaily
+       , createOfferScheduleRate  
+       , createTextCreative  
        , getConvertsOn  
        , getBrowserLanguages
        , getCreativeCounts
@@ -51,7 +53,7 @@ module Afftrack.API.Offers
        , removeOfferBrowserLanguageAllowed
        , removeOfferBrowserLanguageBlocked
        , removeOfferCountry
-       , removeOfferCustomAffiliateCAP
+       , removeOfferCustomAffiliateCap
        , removeOfferCustomAffiliatePayout
        , removeOfferDeviceType
        , removeOfferOptimization
@@ -281,6 +283,15 @@ createOfferScheduleRate =
        , ("schedule_start", "")      -- Required
        , ("admin_id", "")  
        ]  
+
+createTextCreative =
+  Call "offer_offer"
+       "createTextCreative"
+       "POST"
+       [ ("offer_id", "")    -- Required
+       , ("url", "")     -- Required
+       , ("text", "")             
+       ]    
        
 getBrowserLanguages =
   Call "offer_offer"

@@ -1,5 +1,5 @@
 name:                api-afftrack
-version:             0.1.2.0
+version:             0.1.3.0
 synopsis:            Initial project template from stack
 description:         API binding for Afftrack affiliate platform (http://www.afftrack.com)
 homepage:            http://github.com/kelecorix/api-afftrack#readme
