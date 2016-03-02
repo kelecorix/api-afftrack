@@ -1,6 +1,7 @@
 module Afftrack.API.Merchant
        ( addBrowserLanguageBlocked
-       , createMerchant  
+       , createMerchant
+       , getMerchant  
        )
        where
 
@@ -75,3 +76,15 @@ createMerchant =
        , Param "skype"             False ""
        , Param "state"             False ""         
        ]
+
+getMerchant =
+  Call "mer_merchant"
+       "getMerchant"
+       "GET"
+       [ Param "limit"       False ""   
+       , Param "merchant_id" False ""  
+       , Param "orderby"     False ""
+       , Param "page"        False ""
+       , Param "sort"        False ""
+       , Param "status"      False ""
+       ]  
