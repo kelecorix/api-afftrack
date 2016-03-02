@@ -1,7 +1,8 @@
 module Afftrack.API.Merchant
        ( addBrowserLanguageBlocked
        , createMerchant
-       , getMerchant  
+       , getMerchant
+       , getMerchantBlacklist  
        )
        where
 
@@ -88,3 +89,10 @@ getMerchant =
        , Param "sort"        False ""
        , Param "status"      False ""
        ]  
+
+getMerchantBlacklist =
+  Call "mer_merchant"
+       "getMerchant"
+       "GET"
+       [ Param "merchant_id" True  "" ]  
+  
