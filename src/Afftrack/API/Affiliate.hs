@@ -1,6 +1,8 @@
 module Afftrack.API.Affiliate where
        ( createAffiliate
        , getAffiliate
+       , getAffiliateCount
+       , getAffiliateEmails
        ) 
        where
 
@@ -53,11 +55,31 @@ createAffiliate =
 getAffiliate = 
   Call "aff_affiliate"
        "getAffiliate"
-       "POST"
+       "GET"
        [ Param "affiliate_id" False ""
        , Param "limit"        False ""
        , Param "orderby"      False ""
        , Param "page"         False ""
        , Param "sort"         False ""
        , Param "status"       False ""  
+       ]
+
+getAffiliateCount = 
+  Call "aff_affiliate"
+       "getAffiliateCount"
+       "GET"
+       [ Param "admin_id"   False ""
+       , Param "company"    False ""
+       , Param "email"      False ""
+       , Param "firstLast"  False ""
+       , Param "status"     False ""
+       , Param "type"       False ""
+       , Param "website"    False ""  
+       ]
+
+getAffiliateEmails =
+  Call "aff_affiliate"
+       "getAffiliateEmails"
+       "GET"
+       [ Param "affiliate_id" True ""
        ]
