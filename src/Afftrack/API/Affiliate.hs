@@ -3,6 +3,8 @@ module Afftrack.API.Affiliate where
        , getAffiliate
        , getAffiliateCount
        , getAffiliateEmails
+       , getAffiliatePaymentMethods
+       , getAffiliatePaymentTerms
        ) 
        where
 
@@ -83,3 +85,18 @@ getAffiliateEmails =
        "GET"
        [ Param "affiliate_id" True ""
        ]
+
+getAffiliatePaymentMethods =
+  Call "aff_affiliate"
+       "getAffiliatePaymentMethods"
+       "GET"
+       [ Param "N/A" True ""
+       ]
+
+getAffiliatePaymentTerms =
+  Call "aff_affiliate"
+       "getAffiliatePaymentTerms"
+       "GET"
+       [ Param "N/A" True ""
+       ]
+
