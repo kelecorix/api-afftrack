@@ -1,10 +1,5 @@
 module Afftrack.API
-    ( module Afftrack.API.AdminManager
-    , module Afftrack.API.Affiliate
-    , module Afftrack.API.Merchant
-    , module Afftrack.API.Offers
-    , module Afftrack.API.Report
-    , module Afftrack.API.Settings
+    ( Auth(..)
     ) where
 
 import Afftrack.API.AdminManager
