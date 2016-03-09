@@ -1,10 +1,12 @@
-module Afftrack.API.Affiliate where
+module Afftrack.API.Affiliate
        ( createAffiliate
        , getAffiliate
        , getAffiliateCount
        , getAffiliateEmails
        , getAffiliatePaymentMethods
        , getAffiliatePaymentTerms
+       , getAffiliateStatus
+       , getAffiliateTypes
        ) 
        where
 
@@ -100,3 +102,16 @@ getAffiliatePaymentTerms =
        [ Param "N/A" True ""
        ]
 
+getAffiliateStatus =
+  Call "aff_affiliate"
+       "getAffiliateStatus"
+       "GET"
+       [ Param "N/A" True ""
+       ]
+
+getAffiliateTypes =
+  Call "aff_affiliate"
+       "getAffiliateTypes"
+       "GET"
+       [ Param "N/A" True ""
+       ]
