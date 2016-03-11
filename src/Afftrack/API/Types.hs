@@ -46,4 +46,24 @@ instance FromJSON Offer where
     -- A non-Object value is of the wrong type, so fail.
   parseJSON _        = empty  
 
+data Resp =
+  Resp { datas   :: [Offer]
+       , success :: Bool
+       , page    :: Int
+       , total   :: Int
+       , url     :: T.Text
+       , pages   :: Int
+       , limit   :: Int  
+       } deriving (Generic, Show)
 
+instance FromJSON Resp where
+  parseJSON (Object v) =
+    Resp <$> v .: "data"       <*>
+             v .: "success"    <*>
+             v .: "page"       <*>
+             v .: "total"      <*>
+             v .: "request_url"<*>
+             v .: "total_pages"<*>
+             v .: "limit"
+    -- A non-Object value is of the wrong type, so fail.
+  parseJSON _        = empty  
