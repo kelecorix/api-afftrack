@@ -15,7 +15,7 @@ import Data.Aeson
 import Control.Applicative
 import Network.HTTP.Client
 import qualified Data.ByteString.Char8 as BS
-
+import Data.Text
 import Afftrack.API.Common
 
 --------------------------------------------------------------------------------  
