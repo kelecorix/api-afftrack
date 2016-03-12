@@ -8,60 +8,66 @@ module Afftrack.API.Common
        , Param(..)  
        , buildParams
        , buildParams'  
-       , buildRequest  
+       , buildRequest
+       , buildRequest'  
 ) where
 
 import GHC.Generics
+import Afftrack.API.Types
 import Data.Aeson
 import Control.Applicative
 import Network.HTTP.Client
+import Data.Text as Text
 import qualified Data.ByteString.Char8 as BS
 
 --------------------------------------------------------------------------------
 
 data Call =
-  Call { target :: String
-       , action :: String
-       , meth   :: String  
+  Call { target :: Text
+       , action :: Text
+       , meth   :: Text  
        , param  :: [Param] -- name, required, value
        } deriving (Generic, Show)
 
 data Param =
-  Param { name     :: String
+  Param { name     :: Text
         , required :: Bool 
-        , value    :: String
+        , value    :: Text
         } deriving (Show)
 
 -- | Convert action parameters
 --   to concatenated stringx
-buildParams :: [(String, String)] -> String
-buildParams [] = []
+buildParams :: [(Text, Text)] -> Text
+buildParams [] = ""
 buildParams p  =
-  concat $ buildParamsAux p
+  Text.concat $ buildParamsAux p
     where buildParamsAux []           = []
           buildParamsAux ((p1,p2):ps) =
-            case null p2 of
+            case Text.null p2 of
               True  -> buildParamsAux ps
               False ->
                 case p2=="-" of
-                  True  -> ("&" ++ p1 ++ "=")       : buildParamsAux ps
-                  False -> ("&" ++ p1 ++ "=" ++ p2) : buildParamsAux ps
+                  True  -> Text.concat ["&", p1, "="] : buildParamsAux ps
+                  False -> Text.concat ["&", p1, "=", p2] : buildParamsAux ps
 
-buildParams' :: [Param] -> String
-buildParams' [] = []
+buildParams' :: [Param] -> Text
+buildParams' [] = ""
 buildParams' ps =
-  concat $ buildParamsAux ps
+  Text.concat $ buildParamsAux ps
     where buildParamsAux  []                = []
           buildParamsAux ((Param n r v):ps) =
             case r of
               False ->
-                case null v of
+                case Text.null v of
                   True  -> buildParamsAux ps
-                  False -> ("&" ++ n ++ "=" ++ v) : buildParamsAux ps
+                  False -> Text.concat ["&", n, "=", v] : buildParamsAux ps
               True  -> -- this is required field
-                ("&" ++ n ++ "=" ++ v) : buildParamsAux ps
+                Text.concat ["&", n,"=", v] : buildParamsAux ps
                   
 buildRequest :: String -> String -> String -> RequestBody -> IO Request
 buildRequest url ps meth body = do
   nakedRequest <- parseUrl (url++ps)
-  return (nakedRequest { method = (BS.pack meth), requestBody = body })
+  return (nakedRequest { method = (BS.pack meth), requestBody = body })  
+
+buildRequest' :: Auth -> Call -> RequestBody -> IO Request
+buildRequest' a c b = undefined 
