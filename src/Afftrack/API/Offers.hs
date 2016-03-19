@@ -72,52 +72,11 @@ import Data.Aeson
 import Control.Applicative
 import Network.HTTP.Client
 import qualified Data.ByteString.Char8 as BS
-
+import Data.Text
 import Afftrack.API.Common
+import Afftrack.API.Types
 
 --------------------------------------------------------------------------------
-
-data Resp =
-  Resp { datas   :: [Offer]
-       , success :: Bool
-       , page    :: Int
-       , total   :: Int
-       , url     :: String
-       , pages   :: Int
-       , limit   :: Int  
-       } deriving (Generic, Show)
-
-instance FromJSON Resp where
-  parseJSON (Object v) =
-    Resp <$> v .: "data"       <*>
-             v .: "success"    <*>
-             v .: "page"       <*>
-             v .: "total"      <*>
-             v .: "request_url"<*>
-             v .: "total_pages"<*>
-             v .: "limit"
-    -- A non-Object value is of the wrong type, so fail.
-  parseJSON _        = empty  
-
-data TrafficType = INCENT | NONINCENT
-
-data Offer =
-  Offer { name       :: String
-        , link       :: String
-        , linkStatus :: Int
-        , payout     :: Float
-        , merchantID :: Int  
-        } deriving (Generic, Show)
-
-instance FromJSON Offer where
-  parseJSON (Object v) =
-    Offer <$> v .: "program_name"         <*>
-              v .: "program_preview_link" <*>
-              v .: "program_link_status"  <*>
-              v .: "program_adv_paying"   <*>
-              v .: "program_mid"
-    -- A non-Object value is of the wrong type, so fail.
-  parseJSON _        = empty
 
 addBrowserLanguageBlocked = 
   Call "offer_offer"
@@ -323,24 +282,25 @@ getDeviceTypes =
        "GET"
        []  
 
-getOffer =
+getOffer :: [Text] -> Call  
+getOffer params =
   Call "offer_offer"
        "getOffer"
        "GET"
-       [ Param "category"      False ""
-       , Param "converts_on"   False ""
-       , Param "device_type"   False ""
-       , Param "limit"         False ""
-       , Param "merchant_id"   False "" -- empty
-       , Param "name"          False ""
-       , Param "offer_id"      False ""
-       , Param "offer_type"    False ""
-       , Param "orderby"       False ""
-       , Param "page"          False ""
-       , Param "sort"          False ""
-       , Param "status"        False "" -- 107 active
-       , Param "tracking_type" False ""
-       , Param "traffic_type"  False ""
+       [ Param "category"      False (params !! 0)
+       , Param "converts_on"   False (params !! 1)
+       , Param "device_type"   False (params !! 2)
+       , Param "limit"         False (params !! 3)
+       , Param "merchant_id"   False (params !! 4) -- empty
+       , Param "name"          False (params !! 5)
+       , Param "offer_id"      False (params !! 6)
+       , Param "offer_type"    False (params !! 7)
+       , Param "orderby"       False (params !! 8)
+       , Param "page"          False (params !! 9)
+       , Param "sort"          False (params !! 10)
+       , Param "status"        False (params !! 11) -- 107 active
+       , Param "tracking_type" False (params !! 12)
+       , Param "traffic_type"  False (params !! 13)
        ]
 
 -- | Returns all blacklisted affiliates for the offer ID provided.
