@@ -33,7 +33,7 @@ data Auth =
 data Offer =
   Offer { name       :: T.Text
         , link       :: T.Text
-        , linkStatus :: Int
+        , linkStatus :: T.Text
         , payout     :: Float
         , merchantID :: Int  
         } deriving (Generic, Show)
