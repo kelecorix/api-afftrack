@@ -16,6 +16,8 @@ import Control.Applicative
 
 -----------------------------------------------------------------------------
 
+data TrafficType = INCENT | NONINCENT
+
 -- | Core parameters that builds up
 --   auth url to acces methods
 -- 
