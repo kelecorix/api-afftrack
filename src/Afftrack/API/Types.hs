@@ -34,8 +34,8 @@ data Offer =
   Offer { name       :: T.Text
         , link       :: T.Text
         , linkStatus :: T.Text
-        , payout     :: Float
-        , merchantID :: Int  
+        , payout     :: T.Text
+        , merchantID :: T.Text
         } deriving (Generic, Show)
 
 instance FromJSON Offer where
