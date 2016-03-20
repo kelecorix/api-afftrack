@@ -35,6 +35,7 @@ data Offer =
         , link       :: T.Text
         , linkStatus :: T.Text
         , payout     :: T.Text
+        , cap        :: T.Text  
         , merchantID :: T.Text
         } deriving (Generic, Show)
 
@@ -44,6 +45,7 @@ instance FromJSON Offer where
               v .: "program_preview_link" <*>
               v .: "program_link_status"  <*>
               v .: "program_adv_paying"   <*>
+              v .: "program_daily_cap"    <*>
               v .: "program_mid"
     -- A non-Object value is of the wrong type, so fail.
   parseJSON _        = empty  
