@@ -435,12 +435,14 @@ getPixelTypes =
        "getPixelTypes"
        "GET"
        []
-  
-getTestLink =
+
+getTestLink:: [Text] -> Call       
+getTestLink params =
   Call "offer_offer"
        "getTestLink"
        "GET"
-       [ Param "admin_id" True ""] -- Required
+       [ Param "offer_id" True (params!!0)] -- Required
+                                            -- NB: API states that admin_id, required, but this is probably a typo
   
 getTrackingTypes =
   Call "offer_offer"
