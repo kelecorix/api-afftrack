@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Afftrack.API.AdminManager
        ( getAdmins
        , getAdminStatus  

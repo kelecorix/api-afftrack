@@ -31,17 +31,19 @@ data Auth =
        } deriving (Show)
 
 data Offer =
-  Offer { name       :: T.Text
+  Offer { id         :: T.Text
+        , name       :: T.Text
         , link       :: T.Text
         , linkStatus :: T.Text
         , payout     :: T.Text
         , cap        :: T.Text  
-        , merchantID :: T.Text
+        , merchantId :: T.Text
         } deriving (Generic, Show)
 
 instance FromJSON Offer where
   parseJSON (Object v) =
-    Offer <$> v .: "program_name"         <*>
+    Offer <$> v .: "program_pid"          <*>
+              v .: "program_name"         <*>
               v .: "program_preview_link" <*>
               v .: "program_link_status"  <*>
               v .: "program_adv_paying"   <*>
