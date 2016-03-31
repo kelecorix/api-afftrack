@@ -53,7 +53,7 @@ instance FromJSON Offer where
   parseJSON _        = empty  
 
 data Resp =
-  Resp { datas   :: [Offer]
+  Resp { datas   :: [Object]
        , success :: Bool
        , page    :: Int
        , total   :: Int
