@@ -78,205 +78,227 @@ import Afftrack.API.Types
 
 --------------------------------------------------------------------------------
 
-addBrowserLanguageBlocked = 
+addBrowserLanguageBlocked :: [Text] -> Call 
+addBrowserLanguageBlocked params = 
   Call "offer_offer"
        "addBrowserLanguageBlocked"
        "POST"
-       [ Param "language" True ""   -- Required
-       , Param "offer_id" True ""   -- Required
+       [ Param "language" True (getValue params 0)   -- Required
+       , Param "offer_id" True (getValue params 1)  -- Required
        ]
 
-addOfferBlacklist =
+addOfferBlacklist :: [Text] -> Call 
+addOfferBlacklist params =
   Call "offer_offer"
        "addOfferBlacklist"
        "POST"
-       [ Param "affiliate_id" True  ""   -- Required
-       , Param "offer_id"     True  ""   -- Required
-       , Param "reason"       False ""  
+       [ Param "affiliate_id" True  (getValue params 0)   -- Required
+       , Param "offer_id"     True  (getValue params 1)   -- Required
+       , Param "reason"       False (getValue params 2)  
        ]
-  
-addOfferBrowserLanguageAllowed =
+
+addOfferBrowserLanguageAllowed :: [Text] -> Call 
+addOfferBrowserLanguageAllowed params =
   Call "offer_offer"
        "addOfferBrowserLanguageAllowed"
        "POST"
-       [ Param "language" True ""   -- Required
-       , Param "offer_id" True ""   -- Required
+       [ Param "language" True (getValue params 0)   -- Required
+       , Param "offer_id" True (getValue params 1)   -- Required
        ]
-  
-addOfferCategory =
+
+addOfferCategory :: [Text] -> Call      
+addOfferCategory params =
   Call "offer_offer"
        "addOfferCategory"
        "POST"
-       [ Param "category_id" True ""   -- Required
-       , Param "offer_id"    True ""   -- Required
+       [ Param "category_id" True (getValue params 0)   -- Required
+       , Param "offer_id"    True (getValue params 1)   -- Required
        ]
-  
-addOfferCountry = 
+
+addOfferCountry :: [Text] -> Call      
+addOfferCountry params = 
   Call "offer_offer"
        "addOfferCountry"
        "POST"
-       [ Param "country"  True ""   -- Required
-       , Param "offer_id" True ""   -- Required
-       , Param "enforce"  False ""  
+       [ Param "country"  True (getValue params 0)   -- Required
+       , Param "offer_id" True (getValue params 1)   -- Required
+       , Param "enforce"  False (getValue params 2)  
        ]
 
-addOfferCustomAffiliateCap =
+addOfferCustomAffiliateCap :: [Text] -> Call
+addOfferCustomAffiliateCap params =
   Call "offer_offer"
        "addOfferCustomAffiliateCap"
        "POST"
-       [ Param "affiliate_id" True ""    -- Required
-       , Param "offer_id"     True ""    -- Required
-       , Param "type"         True ""    -- Required  
-       , Param "day"          False ""  
-       , Param "month"        False ""  
-       , Param "total"        False ""  
-       , Param "week"         False ""  
+       [ Param "affiliate_id" True (getValue params 0)    -- Required
+       , Param "offer_id"     True (getValue params 1)    -- Required
+       , Param "type"         True (getValue params 2)    -- Required  
+       , Param "day"          False (getValue params 3)  
+       , Param "month"        False (getValue params 4)
+       , Param "total"        False (getValue params 5)  
+       , Param "week"         False (getValue params 6)  
        ]
-       
-addOfferCustomAffiliatePayout =
+
+addOfferCustomAffiliatePayout :: [Text] -> Call      
+addOfferCustomAffiliatePayout params =
   Call "offer_offer"
        "addOfferCustomAffiliatePayout"
        "POST"
-       [ Param "affiliate_id"     True ""    -- Required
-       , Param "affiliate_payout" True ""    -- Required
-       , Param "offer_id"         True ""    -- Required  
-       , Param "merchant_payout"  False ""    
+       [ Param "affiliate_id"     True (getValue params 0)    -- Required
+       , Param "affiliate_payout" True (getValue params 1)    -- Required
+       , Param "offer_id"         True (getValue params 2)    -- Required  
+       , Param "merchant_payout"  False (getValue params 3)    
        ]  
 
-addOfferDeviceType =
+addOfferDeviceType :: [Text] -> Call
+addOfferDeviceType params =
   Call "offer_offer"
        "addOfferDeviceType"
        "POST"
-       [ Param "device_id" True ""        -- Required
-       , Param "offer_id"  True ""        -- Required  
+       [ Param "device_id" True (getValue params 0)        -- Required
+       , Param "offer_id"  True (getValue params 1)        -- Required  
        ]  
-  
-addOfferOptimization =
+
+addOfferOptimization :: [Text] -> Call
+addOfferOptimization params =
   Call "offer_offer"
        "addOfferOptimization"
        "POST"
-       [ Param "affiliate_id" True ""     -- Required
-       , Param "offer_id"     True ""     -- Required
-       , Param "percent"      True ""     -- Required  
+       [ Param "affiliate_id" True (getValue params 0)     -- Required
+       , Param "offer_id"     True (getValue params 1)     -- Required
+       , Param "percent"      True (getValue params 2)     -- Required  
        ]  
-  
-addOfferPrivate =
+addOfferPrivate :: [Text] -> Call 
+addOfferPrivate params =
   Call "offer_offer"
        "addOfferPrivate"
        "POST"
-       [ Param "affiliate_id" True ""     -- Required
-       , Param "offer_id"     True ""     -- Required
+       [ Param "affiliate_id" True (getValue params 0)     -- Required
+       , Param "offer_id"     True (getValue params 1)     -- Required
        ]    
 
-addOfferState =
+addOfferState :: [Text] -> Call
+addOfferState params =
   Call "offer_offer"
        "addOfferState"
        "POST"
-       [ Param "offer_id" True ""     -- Required
-       , Param "state"    True ""     -- Required
+       [ Param "offer_id" True (getValue params 0)     -- Required
+       , Param "state"    True (getValue params 1)     -- Required
        ]    
 
-addOfferTrafficType =
+addOfferTrafficType :: [Text] -> Call
+addOfferTrafficType params =
   Call "offer_offer"
        "addOfferTrafficType"
        "POST"
-       [ Param "banner"   True ""     -- Required
-       , Param "offer_id" True ""     -- Required
-       , Param "url"      False ""  
+       [ Param "banner"   True (getValue params 0)     -- Required
+       , Param "offer_id" True (getValue params 1)     -- Required
+       , Param "url"      False (getValue params 2)  
        ]    
 
-createBannerCreative = 
+createBannerCreative :: [Text] -> Call
+createBannerCreative params = 
   Call "offer_offer"
        "createBannerCreative"
        "POST"
-       [ Param "offer_id"        True ""      -- Required
-       , Param "traffic_type_id" True ""     -- Required
+       [ Param "offer_id"        True (getValue params 0)      -- Required
+       , Param "traffic_type_id" True (getValue params 1)     -- Required
        ]
 
-createOffer = 
+createOffer :: [Text] -> Call
+createOffer params = 
   Call "offer_offer"
        "createOffer"
        "POST"
-       [ Param "admin_id"        True ""      -- Required
-       , Param "category"        True ""     -- Required
-       , Param "converts_at"     True ""     -- Required
-       , Param "lead_rate"       True ""     -- Required
-       , Param "merchant_id"     True ""     -- Required
-       , Param "merchant_paying" True ""     -- Required
-       , Param "name"            False ""
-       , Param "name_private"    False ""
-       , Param "note"            False ""
-       , Param "preview"         False ""
-       , Param "requirements"    False ""  
+       [ Param "admin_id"        True (getValue params 0)      -- Required
+       , Param "category"        True (getValue params 1)     -- Required
+       , Param "converts_at"     True (getValue params 2)     -- Required
+       , Param "lead_rate"       True (getValue params 3)     -- Required
+       , Param "merchant_id"     True (getValue params 4)     -- Required
+       , Param "merchant_paying" True (getValue params 5)     -- Required
+       , Param "name"            False (getValue params 6)
+       , Param "name_private"    False (getValue params 7)
+       , Param "note"            False (getValue params 8)
+       , Param "preview"         False (getValue params 9)
+       , Param "requirements"    False (getValue params 10)
        ]
 
-createOfferSchedule =
+createOfferSchedule :: [Text] -> Call
+createOfferSchedule params =
   Call "offer_offer"
        "createOfferSchedule"
        "POST"
-       [ Param "offer_id"       True ""  -- Required
-       , Param "schedule_start" True ""  -- Required
-       , Param "type"           True ""  -- Required
-       , Param "admin_id"       False ""  
+       [ Param "offer_id"       True (getValue params 0)  -- Required
+       , Param "schedule_start" True (getValue params 1)  -- Required
+       , Param "type"           True (getValue params 2)  -- Required
+       , Param "admin_id"       False (getValue params 3)  
        ]
 
-createOfferScheduleDaily =
+createOfferScheduleDaily :: [Text] -> Call
+createOfferScheduleDaily params =
   Call "offer_offer"
        "createOfferScheduleDaily"
        "POST"
-       [ Param "daily_end_time"   True ""    -- Required
-       , Param "daily_start_time" True ""    -- Required
-       , Param "offer_id"         True ""    -- Required
-       , Param "schedule_end"     True ""    -- Required  
-       , Param "schedule_start"   True ""    -- Required 
-       , Param "admin_id"         False ""  
+       [ Param "daily_end_time"   True (getValue params 0)    -- Required
+       , Param "daily_start_time" True (getValue params 1)    -- Required
+       , Param "offer_id"         True (getValue params 2)    -- Required
+       , Param "schedule_end"     True (getValue params 3)    -- Required  
+       , Param "schedule_start"   True (getValue params 4)    -- Required 
+       , Param "admin_id"         False (getValue params 5)  
        ]  
 
-createOfferScheduleRate =
+createOfferScheduleRate :: [Text] -> Call
+createOfferScheduleRate params =
   Call "offer_offer"
        "createOfferScheduleRate"
        "POST"
-       [ Param "affiliate_payout" True ""    -- Required
-       , Param "merchant_payout"  True ""    -- Required
-       , Param "offer_id"         True ""    -- Required
-       , Param "schedule_start"   True ""    -- Required
-       , Param "admin_id"         False ""  
+       [ Param "affiliate_payout" True (getValue params 0)    -- Required
+       , Param "merchant_payout"  True (getValue params 1)    -- Required
+       , Param "offer_id"         True (getValue params 2)    -- Required
+       , Param "schedule_start"   True (getValue params 3)    -- Required
+       , Param "admin_id"         False (getValue params 4)  
        ]  
 
-createTextCreative =
+createTextCreative :: [Text] -> Call
+createTextCreative params =
   Call "offer_offer"
        "createTextCreative"
        "POST"
-       [ Param "offer_id" True ""    -- Required
-       , Param "url"      True ""     -- Required
-       , Param "text"     False ""             
+       [ Param "offer_id" True (getValue params 0)    -- Required
+       , Param "url"      True (getValue params 1)     -- Required
+       , Param "text"     False (getValue params 2)             
        ]    
-       
-getBrowserLanguages =
+
+getBrowserLanguages :: [Text] -> Call      
+getBrowserLanguages params =
   Call "offer_offer"
        "getBrowserLanguages"
        "GET"
        []
 
-getConvertsOn =
+getConvertsOn :: [Text] -> Call
+getConvertsOn params =
   Call "offer_offer"
        "getConvertsOn"
        "GET"
        []
-       
-getCreativeCounts =
+
+getCreativeCounts :: [Text] -> Call      
+getCreativeCounts params =
   Call "offer_offer"
        "getCreativeCounts"
        "GET"
-       [ Param "offer_id" True ""] -- Required  
+       [ Param "offer_id" True (getValue params 0)] -- Required  
 
-getCreatives =
+getCreatives :: [Text] -> Call
+getCreatives params =
   Call "offer_offer"
        "getCreatives"
        "GET"
-       [ Param "offer_id" True ""] -- Required  
-  
-getDeviceTypes =
+       [ Param "offer_id" True (getValue params 0)] -- Required  
+
+getDeviceTypes :: [Text] -> Call 
+getDeviceTypes params =
   Call "offer_offer"
        "getDeviceTypes"
        "GET"
@@ -287,150 +309,169 @@ getOffer params =
   Call "offer_offer"
        "getOffer"
        "GET"
-       [ Param "category"      False (params !! 0)
-       , Param "converts_on"   False (params !! 1)
-       , Param "device_type"   False (params !! 2)
-       , Param "limit"         False (params !! 3)
-       , Param "merchant_id"   False (params !! 4) -- empty
-       , Param "name"          False (params !! 5)
-       , Param "offer_id"      False (params !! 6)
-       , Param "offer_type"    False (params !! 7)
-       , Param "orderby"       False (params !! 8)
-       , Param "page"          False (params !! 9)
-       , Param "sort"          False (params !! 10)
-       , Param "status"        False (params !! 11) -- 107 active
-       , Param "tracking_type" False (params !! 12)
-       , Param "traffic_type"  False (params !! 13)
+       [ Param "category"      False (getValue params 0)
+       , Param "converts_on"   False (getValue params 1)
+       , Param "device_type"   False (getValue params 2)
+       , Param "limit"         False (getValue params 3)
+       , Param "merchant_id"   False (getValue params 4) -- empty
+       , Param "name"          False (getValue params 5)
+       , Param "offer_id"      False (getValue params 6)
+       , Param "offer_type"    False (getValue params 7)
+       , Param "orderby"       False (getValue params 8)
+       , Param "page"          False (getValue params 9)
+       , Param "sort"          False (getValue params 10)
+       , Param "status"        False (getValue params 11) -- 107 active
+       , Param "tracking_type" False (getValue params 12)
+       , Param "traffic_type"  False (getValue params 13)
        ]
 
 -- | Returns all blacklisted affiliates for the offer ID provided.
---   
-getOfferBlacklist =
+--
+getOfferBlacklist :: [Text] -> Call
+getOfferBlacklist params =
   Call "offer_offer"
        "getOfferBlacklist"
        "GET"
-       [Param "offer_id" True ""] -- Required
+       [Param "offer_id" True (getValue params 0)] -- Required
 
-getOfferBrowserLanguageAllowed =
+getOfferBrowserLanguageAllowed :: [Text] -> Call
+getOfferBrowserLanguageAllowed params =
     Call "offer_offer"
          "getOfferBrowserLanguageAllowed"
          "GET"
-         [ Param "offer_id" True ""] -- Required
-  
-getOfferBrowserLanguageBlocked =
+         [ Param "offer_id" True (getValue params 0)] -- Required
+
+getOfferBrowserLanguageBlocked :: [Text] -> Call
+getOfferBrowserLanguageBlocked params =
     Call "offer_offer"
          "getOfferBrowserLanguageBlocked"
          "GET"
-         [ Param "offer_id" True ""] -- Required
+         [ Param "offer_id" True (getValue params 0)] -- Required
 
 -- | All offer categories returned.
---  
-getOfferCategories =
+--
+getOfferCategories :: [Text] -> Call
+getOfferCategories params =
   Call "offer_offer"
        "getOfferCategories"
        "GET"
        []
 
 -- | Returns all categories listed for the offer ID provided.
--- 
-getOfferCategory = 
+--
+getOfferCategory :: [Text] -> Call
+getOfferCategory params = 
   Call "offer_offer"
        "getOfferCategory"
        "GET"
-        [ Param "offer_id" True ""] -- Required
+        [ Param "offer_id" True (getValue params 0)] -- Required
 
 -- | Return Int
---  
-getOfferCount = 
+--
+getOfferCount :: [Text] -> Call
+getOfferCount params = 
   Call "offer_offer"
        "getOfferCount"
        "GET"
-       [ Param "category"      False ""
-       , Param "converts_on"   False ""
-       , Param "device"        False ""
-       , Param "merchant_id"   False ""
-       , Param "name"          False ""
-       , Param "offer_type"    False ""
-       , Param "status"        False ""
-       , Param "tracking_type" False ""
-       , Param "traffic_type"  False ""  
+       [ Param "category"      False (getValue params 0)
+       , Param "converts_on"   False (getValue params 1)
+       , Param "device"        False (getValue params 2)
+       , Param "merchant_id"   False (getValue params 3)
+       , Param "name"          False (getValue params 4)
+       , Param "offer_type"    False (getValue params 5)
+       , Param "status"        False (getValue params 6)
+       , Param "tracking_type" False (getValue params 7)
+       , Param "traffic_type"  False (getValue params 8)  
        ]
 
-getOfferCountry = 
+getOfferCountry :: [Text] -> Call
+getOfferCountry params = 
   Call "offer_offer"
        "getOfferCountry"
        "GET"
-        [ Param "offer_id" True ""] -- Required
+        [ Param "offer_id" True (getValue params 0)] -- Required
 
-getOfferCustomAffiliateCap = 
+getOfferCustomAffiliateCap :: [Text] -> Call
+getOfferCustomAffiliateCap params = 
   Call "offer_offer"
        "getOfferCustomAffiliateCap"
        "GET"
-        [ Param "offer_id" True ""] -- Required
+        [ Param "offer_id" True (getValue params 0)] -- Required
 
-getOfferCustomAffiliatePayout =
+getOfferCustomAffiliatePayout :: [Text] -> Call
+getOfferCustomAffiliatePayout params =
   Call "offer_offer"
        "getOfferCustomAffiliatePayout"
        "GET"
-       [ Param "offer_id" True ""]  
+       [ Param "offer_id" True (getValue params 0)]  
 
-getOfferDeviceType =
+getOfferDeviceType :: [Text] -> Call
+getOfferDeviceType params =
   Call "offer_offer"
        "getOfferDeviceType"
        "GET"
-       [ Param "offer_id" True ""]  
+       [ Param "offer_id" True (getValue params 0)]  
 
-getOfferOptimization =
+getOfferOptimization :: [Text] -> Call
+getOfferOptimization params =
   Call "offer_offer"
        "getOfferOptimization"
        "GET"
-       [ Param "offer_id" True ""]
+       [ Param "offer_id" True (getValue params 0)]
 
-getOfferPrivate =
+getOfferPrivate :: [Text] -> Call
+getOfferPrivate params =
   Call "offer_offer"
        "getOfferPrivate"
        "GET"
-       [ Param "offer_id" True ""]
-  
-getOfferSchedule = 
+       [ Param "offer_id" True (getValue params 0)]
+
+getOfferSchedule :: [Text] -> Call
+getOfferSchedule params = 
   Call "offer_offer"
        "getOfferSchedule"
        "GET"
-       [ Param "offer_id" True ""]
+       [ Param "offer_id" True (getValue params 0)]
     
 -- | Returns array of all states targeted for the offer_id provided.
--- 
-getOfferState =
+--
+getOfferState :: [Text] -> Call
+getOfferState params =
   Call "offer_offer"
        "getOfferState"
        "GET"
-       [ Param "offer_id" True ""] -- Required
+       [ Param "offer_id" True (getValue params 0)] -- Required
 
-getOfferStatus =
+getOfferStatus :: [Text] -> Call
+getOfferStatus params =
   Call "offer_offer"
        "getOfferStatus"
        "GET"
        []
-
-getOfferTargeting =
+       
+getOfferTargeting :: [Text] -> Call
+getOfferTargeting params =
   Call "offer_offer"
        "getOfferTargeting"
        "GET"
        []
-
-getOfferTrafficType =
+       
+getOfferTrafficType :: [Text] -> Call
+getOfferTrafficType params =
   Call "offer_offer"
        "getOfferTrafficType"
        "GET"
-       [ Param "offer_id" True ""] -- Required
-  
-getOfferTypes =
+       [ Param "offer_id" True (getValue params 0)] -- Required
+
+getOfferTypes :: [Text] -> Call  
+getOfferTypes params =
   Call "offer_offer"
        "getOfferTypes"
        "GET"
        []
-  
-getPixelTypes =
+       
+getPixelTypes :: [Text] -> Call  
+getPixelTypes params =
   Call "offer_offer"
        "getPixelTypes"
        "GET"
@@ -441,176 +482,194 @@ getTestLink params =
   Call "offer_offer"
        "getTestLink"
        "GET"
-       [ Param "offer_id" True (params!!0)] -- Required
+       [ Param "offer_id" True (getValue params 0)] -- Required
                                             -- NB: API states that admin_id, required, but this is probably a typo
-  
-getTrackingTypes =
+       
+getTrackingTypes :: [Text] -> Call 
+getTrackingTypes params =
   Call "offer_offer"
        "getTrackingTypes"
        "GET"
        []
        
-getTrafficTypes =   
+getTrafficTypes :: [Text] -> Call       
+getTrafficTypes params =   
   Call "offer_offer"
        "getTrafficTypes"
        "GET"
        []
-
-removeOfferBlacklist =
+       
+removeOfferBlacklist :: [Text] -> Call
+removeOfferBlacklist params =
   Call "offer_offer"
        "removeOfferBlacklist"
        "POST"
-       [ Param "affiliate_id" True ""]
-
-removeOfferBrowserLanguageAllowed =
+       [ Param "affiliate_id" True (getValue params 0)]
+       
+removeOfferBrowserLanguageAllowed :: [Text] -> Call
+removeOfferBrowserLanguageAllowed params =
   Call "offer_offer"
        "removeOfferBrowserLanguageAllowed"
        "POST"
-       [ Param "offer_id" True ""]  -- Required
-  
-removeOfferBrowserLanguageBlocked =
+       [ Param "offer_id" True (getValue params 0)]  -- Required
+       
+removeOfferBrowserLanguageBlocked :: [Text] -> Call  
+removeOfferBrowserLanguageBlocked params =
   Call "offer_offer"
        "removeOfferBrowserLanguageBlocked"
        "POST"
        []
-  
-removeOfferCountry =
+       
+removeOfferCountry :: [Text] -> Call  
+removeOfferCountry params =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
-       [ Param "offer_id" True ""] -- Required
-
-removeOfferCustomAffiliateCap =
+       [ Param "offer_id" True (getValue params 0)] -- Required
+       
+removeOfferCustomAffiliateCap :: [Text] -> Call
+removeOfferCustomAffiliateCap params =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
-       [ Param "offer_id" True ""] -- Required
-  
-removeOfferCustomAffiliatePayout =
+       [ Param "offer_id" True (getValue params 0)] -- Required
+       
+removeOfferCustomAffiliatePayout :: [Text] -> Call 
+removeOfferCustomAffiliatePayout params =
   Call "offer_offer"
        "removeOfferCountry"
        "POST"
-       [ Param "offer_id" True ""] -- Required
-
-removeOfferDeviceType = 
+       [ Param "offer_id" True (getValue params 0)] -- Required
+       
+removeOfferDeviceType :: [Text] -> Call
+removeOfferDeviceType params = 
   Call "offer_offer"
        "removeOfferDeviceType"
        "POST"
-       [ Param "device_id" True ""] -- Required
+       [ Param "device_id" True (getValue params 0)] -- Required
        
-removeOfferOptimization =
+removeOfferOptimization :: [Text] -> Call       
+removeOfferOptimization params =
     Call "offer_offer"
        "removeOfferOptimization"
        "POST"
-       [ Param "offer_id"      True "" -- Required
-       , Param "affiliate_id"  False "" 
+       [ Param "offer_id"      True (getValue params 0) -- Required
+       , Param "affiliate_id"  False (getValue params 1) 
        ]
        
-removeOfferPrivate =
+removeOfferPrivate :: [Text] -> Call       
+removeOfferPrivate params =
   Call "offer_offer"
        "removeOfferPrivate"
        "POST"
-       [ Param "offer_id"     True "" -- Required
-       , Param "affiliate_id" False "" 
+       [ Param "offer_id"     True (getValue params 0) -- Required
+       , Param "affiliate_id" False (getValue params 1) 
        ]
-
-removeOfferSchedule =
+       
+removeOfferSchedule :: [Text] -> Call
+removeOfferSchedule params =
   Call "offer_offer"
        "removeOfferSchedule"
        "POST"
-       [ Param "offer_id"    True "" -- Required
-       , Param "schedule_id" False "" 
+       [ Param "offer_id"    True (getValue params 0) -- Required
+       , Param "schedule_id" False (getValue params 1) 
        ]
-  
-removeOfferScheduleRate =
+       
+removeOfferScheduleRate :: [Text] -> Call  
+removeOfferScheduleRate params =
   Call "offer_offer"
        "removeOfferScheduleRate"
        "POST"
-       [ Param "offer_id"    True "" -- Required
-       , Param "schedule_id" False "" 
+       [ Param "offer_id"    True (getValue params 0) -- Required
+       , Param "schedule_id" False (getValue params 1) 
        ]
-
-removeOfferState =
+       
+removeOfferState :: [Text] -> Call
+removeOfferState params =
   Call "offer_offer"
        "removeOfferState"
        "POST"
-       [ Param "offer_id" True "" -- Required
-       , Param "state"    False "" 
+       [ Param "offer_id" True (getValue params 0) -- Required
+       , Param "state"    False (getValue params 1) 
        ]
-  
-removeOfferTrafficType =
+       
+removeOfferTrafficType :: [Text] -> Call  
+removeOfferTrafficType params =
   Call "offer_offer"
        "removeOfferTrafficType"
        "POST"
-       [ Param "offer_id"        True "" -- Required
-       , Param "traffic_type_id" False "" 
+       [ Param "offer_id"        True (getValue params 0) -- Required
+       , Param "traffic_type_id" False (getValue params 1) 
        ]
-
-updateOffer =
+       
+updateOffer :: [Text] -> Call
+updateOffer params =
   Call "offer_offer"
        "updateOffer"
        "POST"
-       [ Param "offer_id"               True "" -- Required
-       , Param "basic_proxy_filter"     False "" 
-       , Param "block_ip"               False "" 
-       , Param "break_frame"            False "" 
-       , Param "captcha"                False "" 
-       , Param "cap_redirect"           False "" 
-       , Param "category"               False "" 
-       , Param "click_frequency"        False "" 
-       , Param "click_frequency_subnet" False "" 
-       , Param "click_frequency_unit"   False "" 
-       , Param "converts_at"            False "" 
-       , Param "cookie_life"            False "" 
-       , Param "daily_aff_cap"          False "" 
-       , Param "daily_cap"              False "" 
-       , Param "geo_redirect"           False "" 
-       , Param "hide_lead_rate"         False "" 
-       , Param "hourly_cap"             False "" 
-       , Param "intense_proxy_filter"   False "" 
-       , Param "lead_rate"              False "" 
-       , Param "maxmind"                False "" 
-       , Param "merchant_id"            False "" 
-       , Param "merchant_paying"        False "" 
-       , Param "monthly_aff_cap"        False "" 
-       , Param "monthly_cap"            False "" 
-       , Param "name"                   False "" 
-       , Param "name_private"           False "" 
-       , Param "pixel_type"             False "" 
-       , Param "preview"                True "" 
-       , Param "private"                True "" 
-       , Param "redirect"               True "" 
-       , Param "reject_info"            True "" 
-       , Param "requirements"           True "" 
-       , Param "select"                 True "" 
-       , Param "select_by"              True "" 
-       , Param "select_who"             True "" 
-       , Param "status"                 True "" 
-       , Param "subnet"                 True "" 
-       , Param "time_zone"              True "" 
-       , Param "total_aff_cap"          True "" 
-       , Param "total_cap"              True "" 
-       , Param "tracking_type"          True "" 
-       , Param "type"                   True "" 
-       , Param "weekly_aff_cap"         True "" 
-       , Param "weekly_cap"             True "" 
+       [ Param "offer_id"               True (getValue params 0) -- Required
+       , Param "basic_proxy_filter"     False (getValue params 1) 
+       , Param "block_ip"               False (getValue params 2) 
+       , Param "break_frame"            False (getValue params 3)
+       , Param "captcha"                False (getValue params 4)
+       , Param "cap_redirect"           False (getValue params 5) 
+       , Param "category"               False (getValue params 6) 
+       , Param "click_frequency"        False (getValue params 7) 
+       , Param "click_frequency_subnet" False (getValue params 8)
+       , Param "click_frequency_unit"   False (getValue params 9) 
+       , Param "converts_at"            False (getValue params 10) 
+       , Param "cookie_life"            False (getValue params 11) 
+       , Param "daily_aff_cap"          False (getValue params 12) 
+       , Param "daily_cap"              False (getValue params 13) 
+       , Param "geo_redirect"           False (getValue params 14)
+       , Param "hide_lead_rate"         False (getValue params 15) 
+       , Param "hourly_cap"             False (getValue params 16) 
+       , Param "intense_proxy_filter"   False (getValue params 17) 
+       , Param "lead_rate"              False (getValue params 18) 
+       , Param "maxmind"                False (getValue params 19)
+       , Param "merchant_id"            False (getValue params 20)
+       , Param "merchant_paying"        False (getValue params 21)
+       , Param "monthly_aff_cap"        False (getValue params 22) 
+       , Param "monthly_cap"            False (getValue params 23) 
+       , Param "name"                   False (getValue params 24) 
+       , Param "name_private"           False (getValue params 25) 
+       , Param "pixel_type"             False (getValue params 26) 
+       , Param "preview"                True (getValue params 26) 
+       , Param "private"                True (getValue params 27) 
+       , Param "redirect"               True (getValue params 28) 
+       , Param "reject_info"            True (getValue params 29) 
+       , Param "requirements"           True (getValue params 30) 
+       , Param "select"                 True (getValue params 31) 
+       , Param "select_by"              True (getValue params 32) 
+       , Param "select_who"             True (getValue params 33) 
+       , Param "status"                 True (getValue params 34) 
+       , Param "subnet"                 True (getValue params 35) 
+       , Param "time_zone"              True (getValue params 36) 
+       , Param "total_aff_cap"          True (getValue params 37) 
+       , Param "total_cap"              True (getValue params 38) 
+       , Param "tracking_type"          True (getValue params 39) 
+       , Param "type"                   True (getValue params 40) 
+       , Param "weekly_aff_cap"         True (getValue params 41) 
+       , Param "weekly_cap"             True (getValue params 42) 
        ]
-  
-updateOfferSchedule =
+
+updateOfferSchedule :: [Text] -> Call       
+updateOfferSchedule params =
   Call "offer_offer"
        "updateOfferSchedule"
        "POST"
-       [ Param "datetime_start" True  "" -- Required
-       , Param "offer_id"       True  "" -- Required
-       , Param "datetime_end"   False ""
-       , Param "new_rate"       False ""
-       , Param "status"         False ""  
+       [ Param "datetime_start" True  (getValue params 0) -- Required
+       , Param "offer_id"       True  (getValue params 1) -- Required
+       , Param "datetime_end"   False (getValue params 2)
+       , Param "new_rate"       False (getValue params 3)
+       , Param "status"         False (getValue params 4)  
        ]
-       
-updateTrackingLink = 
+
+updateTrackingLink :: [Text] -> Call
+updateTrackingLink params = 
   Call "offer_offer"
        "updateOfferSchedule"
        "POST"
-       [ Param "offer_id"     True "" -- Required
-       , Param "tracking_url" True "" -- Required  
+       [ Param "offer_id"     True (getValue params 0) -- Required
+       , Param "tracking_url" True (getValue params 1) -- Required  
        ]
