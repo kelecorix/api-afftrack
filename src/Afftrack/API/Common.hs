@@ -9,7 +9,8 @@ module Afftrack.API.Common
        , buildParams
        , buildParams'  
        , buildRequest
-       , buildRequest'  
+       , buildRequest'
+       , getValue  
 ) where
 
 import GHC.Generics
@@ -18,7 +19,9 @@ import Data.Aeson
 import Control.Applicative
 import Network.HTTP.Client
 import Data.Text as Text
+import qualified Control.Exception as E
 import qualified Data.ByteString.Char8 as BS
+import Safe
 
 --------------------------------------------------------------------------------
 
@@ -63,7 +66,7 @@ buildParams' ps =
                   False -> Text.concat ["&", n, "=", v] : buildParamsAux ps
               True  -> -- this is required field
                 Text.concat ["&", n,"=", v] : buildParamsAux ps
-                  
+
 buildRequest :: String -> String -> String -> RequestBody -> IO Request
 buildRequest url ps meth body = do
   nakedRequest <- parseUrl (url++ps)
@@ -71,3 +74,8 @@ buildRequest url ps meth body = do
 
 buildRequest' :: Auth -> Call -> RequestBody -> IO Request
 buildRequest' a c b = undefined 
+
+getValue :: [Text] -> Int -> Text
+getValue params i = do 
+  (!!) params i
+      
