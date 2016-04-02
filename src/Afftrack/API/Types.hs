@@ -6,7 +6,8 @@
 module Afftrack.API.Types
        ( Auth(..)
        , Resp(..)
-       , Offer(..)  
+       , Offer(..)
+       , parseOffer  
        ) where
 
 import GHC.Generics
@@ -38,32 +39,34 @@ data Offer =
         , payout     :: T.Text
         , cap        :: T.Text  
         , merchantId :: T.Text
+        , destination:: T.Text  
         } deriving (Generic, Show)
 
+parseOffer v =
+  Offer <$> v .: "program_pid"          <*>
+            v .: "program_name"         <*>
+            v .: "program_preview_link" <*>
+            v .: "program_link_status"  <*>
+            v .: "program_adv_paying"   <*>
+            v .: "program_daily_cap"    <*>
+            v .: "program_mid"          <*>
+            v .: "program_preview_link"
+
 instance FromJSON Offer where
-  parseJSON (Object v) =
-    Offer <$> v .: "program_pid"          <*>
-              v .: "program_name"         <*>
-              v .: "program_preview_link" <*>
-              v .: "program_link_status"  <*>
-              v .: "program_adv_paying"   <*>
-              v .: "program_daily_cap"    <*>
-              v .: "program_mid"
-    -- A non-Object value is of the wrong type, so fail.
-  parseJSON _        = empty  
+  parseJSON (Object v) = parseOffer v
+  parseJSON _          = empty  
 
 data Resp =
   Resp { datas   :: [Object]
        , success :: Bool
-       , page    :: Int
-       , total   :: Int
+       , page    :: Maybe Int
+       , total   :: Maybe Int
        , url     :: T.Text
-       , pages   :: Int
-       , limit   :: Int  
+       , pages   :: Maybe Int
+       , limit   :: Maybe Int  
        } deriving (Generic, Show)
 
-instance FromJSON Resp where
-  parseJSON (Object v) =
+parseResponse v = 
     Resp <$> v .: "data"       <*>
              v .: "success"    <*>
              v .: "page"       <*>
@@ -71,5 +74,7 @@ instance FromJSON Resp where
              v .: "request_url"<*>
              v .: "total_pages"<*>
              v .: "limit"
-    -- A non-Object value is of the wrong type, so fail.
-  parseJSON _        = empty  
+             
+instance FromJSON Resp where
+  parseJSON (Object v) = parseResponse v
+  parseJSON _          = empty  
