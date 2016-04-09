@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Afftrack.API.AdminManager
+module Afftrack.API.Brand.AdminManager
        ( getAdmins
        , getAdminStatus  
        )where

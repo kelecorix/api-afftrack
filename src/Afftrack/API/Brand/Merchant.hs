@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Afftrack.API.Merchant
+module Afftrack.API.Brand.Merchant
        ( addBrowserLanguageBlocked
        , createMerchant
        , getMerchant

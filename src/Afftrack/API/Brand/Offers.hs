@@ -3,7 +3,7 @@
 {-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE DeriveAnyClass    #-}
 
-module Afftrack.API.Offers
+module Afftrack.API.Brand.Offers
        ( Offer(..)
        , addBrowserLanguageBlocked
        , addOfferBlacklist

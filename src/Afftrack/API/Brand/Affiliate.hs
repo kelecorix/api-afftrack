@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Afftrack.API.Affiliate
+module Afftrack.API.Brand.Affiliate
        ( createAffiliate
        , getAffiliate
        , getAffiliateCount
