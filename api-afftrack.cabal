@@ -1,5 +1,5 @@
 name:                api-afftrack
-version:             0.1.4.0
+version:             0.2.0.0
 synopsis:            API library for http://afftrack.com
 description:         API binding for Afftrack affiliate platform (http://www.afftrack.com)
 homepage:            http://github.com/kelecorix/api-afftrack#readme
@@ -17,13 +17,14 @@ library
   hs-source-dirs:      src
   exposed-modules:     Afftrack.API
                  ,     Afftrack.API.Common
-                 ,     Afftrack.API.AdminManager
-                 ,     Afftrack.API.Affiliate
-                 ,     Afftrack.API.Merchant
-                 ,     Afftrack.API.Offers
-                 ,     Afftrack.API.Report
-                 ,     Afftrack.API.Settings
-                 ,     Afftrack.API.Types
+                 ,     Afftrack.API.Types		 
+                 ,     Afftrack.API.Brand.AdminManager
+                 ,     Afftrack.API.Brand.Affiliate
+                 ,     Afftrack.API.Brand.Merchant
+                 ,     Afftrack.API.Brand.Offers
+                 ,     Afftrack.API.Brand.Report
+                 ,     Afftrack.API.Brand.Settings
+                 ,     Afftrack.API.Affiliate.Affiliate	 
   
   build-depends:       base >= 4.7 && < 5
                ,       aeson
