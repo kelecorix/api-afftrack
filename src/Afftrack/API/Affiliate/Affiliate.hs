@@ -1,5 +1,18 @@
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE FlexibleContexts  #-}
+{-# LANGUAGE DeriveGeneric     #-}
+{-# LANGUAGE DeriveAnyClass    #-}
+
 module Afftrack.API.Affiliate.Affiliate where
 
+import GHC.Generics
+import Data.Aeson
+import Control.Applicative
+import Network.HTTP.Client
+import qualified Data.ByteString.Char8 as BS
+import Data.Text
+import Afftrack.API.Common
+import Afftrack.API.Types
 
 --------------------------------------------------------------------------------
 
@@ -18,7 +31,6 @@ getStatsSummary params =
        , Param "ey"  True (getValue params 5)
        , Param "ey"  True (getValue params 6)
        ]
-
 
 -- | This action will return detailed conversion information for the time period.
 -- 
@@ -143,6 +155,87 @@ getOffersCategories params =
   Call ""
        "offers_cats"
        "GET"
-       [ Param "id"  True (getValue params 0)
+       [
        ]
 
+-- | This action will return a listing of Country Codes that are used in conjunction
+-- with the "offer_countries" parameter on the offers API.
+getOffersCountries :: [Text] -> Call 
+getOffersCountries params = 
+  Call ""
+       "offers_countries"
+       "GET"
+       [
+       ]
+
+-- | This action will return a listing of targets that are used in conjunction with the "offer_targeting" parameter on the offers API.
+getOffersTargets :: [Text] -> Call 
+getOffersTargets params = 
+  Call ""
+       "offers_targets"
+       "GET"
+       [
+       ]
+
+-- | This action will return a listing of Traffic Type IDs that can be used in conjunction with the "type" parameter on the offers API.
+getOffersTrafficTypes :: [Text] -> Call 
+getOffersTrafficTypes params = 
+  Call ""
+       "offers_traffic_types"
+       "GET"
+       [
+       ]       
+
+-- | This action will return a listing of Status IDs that can be used in conjunction with the "status" parameter on the offers API.
+getOffersStatuses :: [Text] -> Call 
+getOffersStatuses params = 
+  Call ""
+       "offers_statuses"
+       "GET"
+       [
+       ]
+
+-- | This action will return a listing of Converts At IDs that can be used in conjunction with the "converts_at" parameter on the offers API.
+getOffersConverts :: [Text] -> Call 
+getOffersConverts params = 
+  Call ""
+       "offers_converts_at"
+       "GET"
+       [
+       ]
+
+-- | This action will return a plain text string of either ACTIVE or INACTIVE
+offerCheck :: [Text] -> Call 
+offerCheck params = 
+  Call ""
+       "offers_check"
+       "GET"
+       [ Param "pid"  True (getValue params 0)
+       ]
+
+-- | This action will return current cap usage for an offer if a cap is in place for that offer.
+getOfferCap :: [Text] -> Call 
+getOfferCap params = 
+  Call ""
+       "cap"
+       "GET"
+       [ Param "pid"  True (getValue params 0)
+       ]
+
+-- | This action will return a json string with the banner, text and HTML creatives.
+getOfferCreatives :: [Text] -> Call 
+getOfferCreatives params = 
+  Call ""
+       "offer_creatives"
+       "GET"
+       [ Param "pid"  True (getValue params 0)
+       ]
+
+-- | This action will return a json string with the banner, text and HTML creatives.
+getOffersCreativesEmail :: [Text] -> Call 
+getOffersCreativesEmail params = 
+  Call ""
+       "offers_email"
+       "GET"
+       [ Param "pid"  True (getValue params 0)
+       ]
