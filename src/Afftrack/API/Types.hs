@@ -31,6 +31,8 @@ data Auth =
        , format   :: T.Text  
        } deriving (Show)
 
+-- | Offer type used for Brand API
+--  
 data Offer =
   Offer { id         :: T.Text
         , name       :: T.Text

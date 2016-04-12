@@ -24,7 +24,8 @@ library
                  ,     Afftrack.API.Brand.Offers
                  ,     Afftrack.API.Brand.Report
                  ,     Afftrack.API.Brand.Settings
-                 ,     Afftrack.API.Affiliate.Affiliate	 
+                 ,     Afftrack.API.Affiliate.Affiliate
+                 ,     Afftrack.API.Affiliate.Types
   
   build-depends:       base >= 4.7 && < 5
                ,       aeson
