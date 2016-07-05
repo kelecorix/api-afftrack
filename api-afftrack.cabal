@@ -1,5 +1,5 @@
 name:                api-afftrack
-version:             0.2.2.0
+version:             0.2.3.0
 synopsis:            API library for http://afftrack.com
 description:         API binding for Afftrack affiliate platform (http://www.afftrack.com)
 homepage:            http://github.com/kelecorix/api-afftrack#readme
