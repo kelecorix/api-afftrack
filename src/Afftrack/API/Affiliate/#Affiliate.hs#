@@ -94,7 +94,7 @@ getOfferRequestStatus params =
   Call ""
        "offer_request"
        "GET"
-       [ Param "id"     True (getValue params 0)
+       [ Param "id"     True  (getValue params 0)
        , Param "answer" False (getValue params 1)
        ]
 

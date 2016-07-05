@@ -13,15 +13,16 @@ module Afftrack.API.Common
        , getValue  
 ) where
 
-import GHC.Generics
-import Afftrack.API.Types
-import Data.Aeson
-import Control.Applicative
-import Network.HTTP.Client
-import Data.Text as Text
+import           Afftrack.API.Types
+import           Control.Applicative
 import qualified Control.Exception as E
+import           Data.Aeson
+import           Data.Maybe
 import qualified Data.ByteString.Char8 as BS
-import Safe
+import           Data.Text as Text
+import           GHC.Generics
+import           Network.HTTP.Client
+import           Safe
 
 --------------------------------------------------------------------------------
 
@@ -76,6 +77,9 @@ buildRequest' :: Auth -> Call -> RequestBody -> IO Request
 buildRequest' a c b = undefined 
 
 getValue :: [Text] -> Int -> Text
-getValue params i = do 
-  (!!) params i
+getValue params i = fromMaybe "" $ safeNth i params
       
+safeNth :: Int -> [a] -> Maybe a
+safeNth 0 list = headMay list
+safeNth pos (x:xs) | pos < 0   = Nothing
+                   | otherwise = safeNth (pos-1) xs
